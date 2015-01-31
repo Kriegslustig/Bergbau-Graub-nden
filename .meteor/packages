@@ -7,3 +7,7 @@
 meteor-platform
 autopublish
 insecure
+iron:router
+orionjs:core
+orionjs:styles
+less
