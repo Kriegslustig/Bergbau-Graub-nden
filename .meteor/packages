@@ -12,5 +12,3 @@ orionjs:core
 orionjs:styles
 less
 mike:mocha
-clinical:nightwatch
-velocity:nightwatch-framework
