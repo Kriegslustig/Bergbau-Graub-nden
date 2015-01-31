@@ -5,7 +5,7 @@
 4) Taskifying the whole Thing
     - Alalyzing Task
     - Write something like CRC-Cards
-    - Writting tests (Unit Test)
+    - Writting tests
     - Getting it done
     - Refactoring
 5) Goal
@@ -48,3 +48,8 @@ reference
     author {string}
   position {string}
 ```
+
+# Package evaluation
+* Admin Interface -> orionjs:core
+* Router -> iron:router
+* Testing -> mike:mocha
