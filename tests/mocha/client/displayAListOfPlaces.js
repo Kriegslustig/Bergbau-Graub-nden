@@ -3,13 +3,14 @@ if (!(typeof MochaWeb === 'undefined')){
     describe('The Route "/"', function () {
       it('Should have the title "map"', function () {
         var title = document.title
+        console.log(title)
         chai.assert.include(title, 'Map')
       })
     })
     describe('A list of places', function () {
-      it('Should have a main section withe the class map', function () {
+      it('Should have a main section with the class map', function () {
         var map = $('main.map')
-        chai.assert.lengthOf(map, 1)
+        chai.assert.ok(map.length > 0)
       })
       it('Should contain map__places', function () {
         var placesList = $('main.map ul.map__places')
@@ -22,7 +23,8 @@ if (!(typeof MochaWeb === 'undefined')){
     })
     describe('A place', function () {
       it('Should include a title', function () {
-        var title = $('li.place .place__title').text
+        var title = $('li.place .place__title').text()
+        console.log(title)
         chai.assert.ok(title.length > 0)
       })
     })
