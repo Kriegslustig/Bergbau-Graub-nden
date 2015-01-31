@@ -1,0 +1,14 @@
+<template name="pageMap">
+
+  {{ metaTitle }}
+
+  <main class="map">
+    <ul class="map__places">
+      {{ #each listPlaces }}
+        <li class="place">
+          <h2 class="title">{{ title }}</h2>
+        </li>
+      {{ /each }}
+    </ul>
+  </main>
+</template>
