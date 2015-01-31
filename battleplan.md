@@ -51,5 +51,5 @@ reference
 # Package evaluation
 * Admin Interface -> orionjs:core, orionjs:styles
 * Router -> iron:router
-* Testing -> xolvio:cucumber, mike:mocha
+* Testing -> mike:mocha
 * Styling -> less
