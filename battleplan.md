@@ -4,7 +4,6 @@
 3) Packages Evaluation
 4) Taskifying the whole Thing
     - Alalyzing Task
-    - Write something like CRC-Cards
     - Writting tests
     - Getting it done
     - Refactoring
@@ -29,7 +28,7 @@ place
       latitude {int}
       longitude {int}
   type {string}
-  [type = mine ? ->] thingsFound {array} {string}
+  thingsFound [type = mine ?] {array} {string}
   images {array} {images}
   references {reference._id}
   owners {array}
@@ -52,5 +51,5 @@ reference
 # Package evaluation
 * Admin Interface -> orionjs:core, orionjs:styles
 * Router -> iron:router
-* Testing -> mike:mocha
+* Testing -> xolvio:cucumber, mike:mocha
 * Styling -> less
