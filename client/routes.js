@@ -1,13 +1,13 @@
 Router.route('/', {
   name: 'map'
+, waitOn: function () {
+    return Meteor.subscribe('placesList')
+  }
 , action: function () {
     var self = this
-    Meteor.subscribe('placesList')
     self.render('pageMap')
   }
 , data: {
-    metaTitle: function () {
-      document.title = 'Bergbau Graubünden - Map'
-    }
+    metaTitle: 'Map'
   }
 })

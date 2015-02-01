@@ -1,10 +1,10 @@
 if(!(typeof MochaWeb === 'undefined')) {
   MochaWeb.testOnly(function () {
     describe('All Places', function () {
+      Meteor.flush()
       var allPlaces = Places.find({})
       allPlaces.forEach(function (place) {
         it('Should have an attribute location', function () {
-          console.log(JSON.stringify(place))
           chai.assert.isObject(place.location)
           chai.assert.isString(place.location.name)
           chai.assert.isObject(place.location.coordinates)
