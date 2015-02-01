@@ -30,7 +30,7 @@ place
   type {string}
   thingsFound [type = mine ?] {array} {string}
   images {array} {images}
-  references {reference._id}
+  references {array} {reference._id}
   owners {array}
     name {string}
       start {int}
