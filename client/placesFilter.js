@@ -5,11 +5,11 @@ placesFilter.newFilter('usage', {
   attributes: {
     start: {
       value: -1000
-    , dataType: 'integer'
+    , dataType: 'number'
     }
   , stop: {
       value: 2000
-    , dataType: 'integer'
+    , dataType: 'number'
     }
   }
 , generateFilter: function () {

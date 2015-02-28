@@ -36,3 +36,7 @@ timeRange = {
     }
   }
 }
+
+Template.timeRange.rendered = function () {
+  timeRange.init()
+}

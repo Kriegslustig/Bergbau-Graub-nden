@@ -21,6 +21,7 @@ Filter = {
       _.extend(self.concatinatedFilter, filterObject.generateFilter())
       return filterObject
     })
+    console.log(self.concatinatedFilter)
     self._setItems(self.queryItems(self.concatinatedFilter))
   }
 , newFilter: function (filterName, newProps) {
@@ -39,10 +40,15 @@ Filter = {
     , setAttribute: function (attribute, newValue) {
         var that = this
         if(that.attributes[attribute]
-          && that.attributes[attribute].dataType
-          && typeof newValue == that.attributes[attribute].dataType) {
-          that.attributes[attribute].value = newValue
-          self.updateFilter()
+          && that.attributes[attribute].dataType) {
+          if(typeof newValue == that.attributes[attribute].dataType) {
+            that.attributes[attribute].value = newValue
+            self.updateFilter()
+          } else {
+            console.log('data type should be ' + that.attributes[attribute].dataType + ', ' +  typeof newValue + ' was passed instead')
+          }
+        } else {
+          console.log('Invalid attribute name')
         }
       }
     }
