@@ -2,7 +2,7 @@ timeRange = {
   config: {
     elemClass: 'timeRange'
   , barElemClass: 'timeRange__bar'
-  , step: 10
+  , step: 100
   }
 , events: {}
 , position: 0
@@ -22,6 +22,8 @@ timeRange = {
   }
 , setPosition: function (newPosition) {
     var self = this
+    newPosition = newPosition > self.max ? self.max : newPosition
+    newPosition = newPosition < 0 ? 0 : newPosition
     self.position = newPosition
     self.updateElementPosition()
     self.events.change = new CustomEvent('change', {
