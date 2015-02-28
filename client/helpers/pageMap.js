@@ -1,5 +1,6 @@
 Template.pageMap.helpers({
   listPlaces: function () {
-    return Places.find({})
+    placesFilter.updateFilter()
+    return placesFilter.getItems()
   }
 })
