@@ -9,4 +9,3 @@ iron:router
 orionjs:core
 orionjs:styles
 less
-mike:mocha
