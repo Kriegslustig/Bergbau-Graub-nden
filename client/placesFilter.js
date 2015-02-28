@@ -16,8 +16,10 @@ placesFilter.newSubFilter('usage', {
     self = this
     return {
       'usage.start': {
+        $lte: self.attributes.start.value
+      }
+    , 'usage.stop': {
         $gte: self.attributes.start.value
-      , $lte: self.attributes.stop.value
       }
     }
   }
