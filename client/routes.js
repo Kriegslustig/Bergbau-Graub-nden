@@ -7,7 +7,4 @@ Router.route('/', {
     var self = this
     self.render('pageMap')
   }
-, data: {
-    metaTitle: 'Map'
-  }
 })
