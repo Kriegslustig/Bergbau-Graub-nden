@@ -1,8 +1,11 @@
 .timeRange {
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   height: 2rem;
-  background-color: hsl(0, 0%, 20%);
+  background-color: hsla(0, 0%, 20%, .2);
 }
 
 .timeRange__bar {
@@ -11,5 +14,21 @@
   left: 0;
   height: 3rem;
   width: 1px;
-  background-color: hsl(0, 0%, 70%);
+  background-color: hsla(0, 0%, 70%, .9);
+}
+
+.timeRange__control {
+  display: block;
+  position: absolute;
+  width: 2rem;
+  left: 0;
+  top: 0;
+  background-color: hsla(0, 0%, 90%, .6);
+  line-height: 2rem;
+  text-align: center;
+}
+
+.timeRange__control--stepUp {
+  left: auto;
+  right: 0;
 }
