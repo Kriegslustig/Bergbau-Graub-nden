@@ -1,5 +1,5 @@
 <template name="blockPlace">
   <li class="place">
-    <h2 class="place__location">{{ location.name }}</h2>
+    <h2 class="place__location" data-longitude="{{ location.coordinates.longitude }}" data-latitude="{{ location.coordinates.latitude }}">{{ location.name }}</h2>
   </li>
 </template>
