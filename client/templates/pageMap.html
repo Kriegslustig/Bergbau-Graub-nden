@@ -3,6 +3,7 @@
   {{ setMetaTitle 'Map' }}
 
   <main class="map">
+    {{ > sidebar }}
     <ul class="map__places">
       {{ #each listPlaces }}
         {{ > blockPlace }}

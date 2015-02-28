@@ -1,0 +1,74 @@
+.sidebar {
+  position: absolute;
+  left: -24rem;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 24rem;
+  background-color: hsl(0, 0%, 97%);
+  transition: .4s left cubic-bezier(.6,1.1,.6,1.1);
+}
+
+.sidebar--js--open {
+  left: -3rem;
+}
+
+.sidebar__toggler {
+  display: block;
+  position: absolute;
+  right: -38px;
+  top: 0;
+  width: 38px;
+  background-color: inherit;
+  color: hsl(0, 0%, 0%);
+  text-align: center;
+  line-height: 36px;
+  text-decoration: none;
+}
+
+.sidebar__toggleBurger,
+.sidebar__toggleBurger:before,
+.sidebar__toggleBurger:after {
+  position: absolute;
+  left: 0;
+  width: 22px;
+  height: 3.1px;
+  background-color: hsl(0, 0%, 0%);
+  transition: all .6s cubic-bezier(.60,1,.60,1);
+}
+
+.sidebar__toggleBurger {
+  top: 8px;
+  left: 8px;
+  background-color: hsl(0, 0%, 0%);
+}
+
+.sidebar__toggleBurger:before {
+  content: '';
+  top: 8px;
+  transform: rotate(0deg);
+  background-color: inherit;
+  transition: all 1s cubic-bezier(0,1,0,1);
+}
+
+.sidebar__toggleBurger:after {
+  content: '';
+  top: 16px;
+  transform: rotate(0deg);
+  background-color: inherit;
+}
+
+.sidebar--js--open__toggler .sidebar__toggleBurger {
+  top: 16px;
+  transform: rotate(45deg);
+}
+
+.sidebar--js--open__toggler .sidebar__toggleBurger:before {
+  top: 0;
+  transform: rotate(360deg);
+}
+
+.sidebar--js--open__toggler .sidebar__toggleBurger:after {
+  top: 0;
+  transform: rotate(-90deg);
+}
