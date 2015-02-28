@@ -1,7 +1,7 @@
 placesFilter = Object.create(Filter)
 placesFilter.collection = Places
 
-placesFilter.newFilter('usage', {
+placesFilter.newSubFilter('usage', {
   attributes: {
     start: {
       value: -1000
@@ -12,7 +12,7 @@ placesFilter.newFilter('usage', {
     , dataType: 'number'
     }
   }
-, generateFilter: function () {
+, generateSubFilter: function () {
     self = this
     return {
       'usage.start': {

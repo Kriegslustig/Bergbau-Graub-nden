@@ -6,9 +6,7 @@ placesFilterController = {
 , updateTime: function (e) {
     var self = this
   , newTime = e.detail.position
-    placesFilter.filters.usage.setAttribute('start', newTime)
-    console.log(newTime)
-    console.log(placesFilter.filters.usage.attributes.start)
+    placesFilter.subFilters.usage.setAttribute('start', newTime)
   }
 }
 
