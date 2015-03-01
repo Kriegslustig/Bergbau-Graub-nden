@@ -16,3 +16,14 @@ Router.route('/users', {
     self.render('pageUsers')
   }
 })
+
+Router.route('/places', {
+  name: 'places'
+, waitOn: function () {
+    return Meteor.subscribe('placesList')
+  }
+, action: function () {
+    var self = this
+    self.render('pagePlaces')
+  }
+})
