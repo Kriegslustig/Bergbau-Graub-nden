@@ -43,3 +43,10 @@ FilterCheckboxes = {
     _trueListDep.changed()
   }
 }
+
+Template.registerHelper('filterCheckboxesSection', function (name, label) {
+  return Blaze.renderWithData(Template.filterCheckboxes, {
+    name: name
+  , label: label
+  })
+})
