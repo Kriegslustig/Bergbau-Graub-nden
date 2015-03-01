@@ -1,7 +1,5 @@
 FilterCheckboxes = {
-  title: 'Checkboxes'
-, name: 'checkboxes'
-, items: [{
+  items: [{
     label: 'Example'
   , name: 'example'
   }]
