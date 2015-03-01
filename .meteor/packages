@@ -8,3 +8,4 @@ meteor-platform
 iron:router
 less
 underscore
+accounts-password
