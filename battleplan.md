@@ -18,6 +18,7 @@
 /references/:_id
 /finds
 /finds/:id
+/users
 ```
 
 # Database Schema
@@ -51,5 +52,5 @@ reference
 ```
 
 # Package evaluation
-* Admin Interface -> accounts-password
+* Admin Interface -> accounts-password, aldeed-autoform
 * Router -> iron:router

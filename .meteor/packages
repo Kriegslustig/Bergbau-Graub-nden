@@ -9,3 +9,4 @@ iron:router
 less
 underscore
 accounts-password
+aldeed:autoform
