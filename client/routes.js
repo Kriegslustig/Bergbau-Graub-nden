@@ -11,11 +11,6 @@ Router.route('/', {
 
 Router.route('/users', {
   name: 'users'
-, waitOn: function () {
-    if(Meteor.user()) {
-      return Meteor.subscribe('usersList')
-    }
-  }
 , action: function () {
     var self = this
     self.render('pageUsers')
