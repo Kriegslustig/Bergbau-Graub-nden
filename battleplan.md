@@ -3,7 +3,7 @@
 2) Database Schema
 3) Packages Evaluation
 4) Taskifying the whole Thing
-    - Alalyzing Task
+    - Analyzing Task
     - Writting tests
     - Getting it done
     - Refactoring
@@ -16,6 +16,8 @@
 /places/:_id
 /references
 /references/:_id
+/finds
+/finds/:id
 ```
 
 # Database Schema
