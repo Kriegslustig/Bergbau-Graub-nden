@@ -14,8 +14,6 @@ Router.route('/users', {
 , waitOn: function () {
     if(Meteor.user()) {
       return Meteor.subscribe('usersList')
-    } else {
-      return true
     }
   }
 , action: function () {
