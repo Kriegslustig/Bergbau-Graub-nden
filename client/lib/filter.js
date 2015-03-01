@@ -68,7 +68,7 @@ Filter = {
           console.log('data type should be ' + that.attributes[attribute].dataType + ', ' +  typeof newValue + ' was passed instead')
         }
       } else {
-        console.log('Invalid attribute name')
+        console.log('Invalid attribute name: ' + attribute)
       }
     }
   }

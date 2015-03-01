@@ -1,17 +1,20 @@
 placesFilterController = {
   placeType: Object.create(FilterCheckboxes)
-, placeOwner: Object.create(FilterCheckboxes)
+, placeOwners: Object.create(FilterCheckboxes)
 , init: function () {
     var self = this
     timeRange.element.addEventListener('changed', self.updateTime)
     self.placeType.element.addEventListener('changed', self.updateType)
+    self.placeOwners.element.addEventListener('changed', self.updateOwners)
   }
 , updateTime: function (e) {
     placesFilter.subFilters.usage.setAttribute('start', e.detail.position)
   }
 , updateType: function (e) {
-    console.log(e.detail)
     placesFilter.subFilters.placeType.setAttribute('types', e.detail.trueList)
+  }
+, updateOwners: function (e) {
+    placesFilter.subFilters.placeOwners.setAttribute('owners', e.detail.trueList)
   }
 }
 
@@ -21,7 +24,7 @@ Template.placesFilterController.rendered = function () {
 
 document.addEventListener('filterCheckboxesRendered', function (e) {
   var detail = e.detail
-  placesFilterController.placeOwner.name = 'placeOwner'
+  placesFilterController.placeOwners.name = 'placeOwner'
   placesFilterController.placeType.name = 'placeType'
   if(detail.name === placesFilterController.placeType.name) {
     placesFilterController.placeType.items = []
@@ -34,16 +37,24 @@ document.addEventListener('filterCheckboxesRendered', function (e) {
       })
     })
     placesFilterController.placeType.init()
-  } else if(detail.name === placesFilterController.placeOwner.name) {
-    placesFilterController.placeOwner.items = []
+  } else if(detail.name === placesFilterController.placeOwners.name) {
+    placesFilterController.placeOwners.items = []
     // TODO: These types will probably need to be denormalized into a seperate collection
-    var allPlacesWithOwners = Places.find({}, {fields: {owner: true}}).fetch()
+    var allPlacesWithOwners = Places.find({}, {fields: {owners: true}}).fetch()
+  , ownersBuffer = []
     _.each(allPlacesWithOwners, function (place) {
-      placesFilterController.placeOwner.items.push({
-        name: place.owner
-      , label: place.owner
+      _.each(place.owners, function (owner) {
+        if(ownersBuffer.indexOf(owner.name) < 0) {
+          ownersBuffer.push(owner.name)
+        }
       })
     })
-    placesFilterController.placeOwner.init()
+    _.each(ownersBuffer, function (ownerName) {
+      placesFilterController.placeOwners.items.push({
+        name: ownerName
+      , label: ownerName
+      })
+    })
+    placesFilterController.placeOwners.init()
   }
 })

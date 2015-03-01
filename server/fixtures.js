@@ -11,12 +11,13 @@ if(Places.find({}).count() < 1) {
   , thingsFound: []
   , images: []
   , references: []
-  , owners: {
-    superman: {
-      start: 10
+  , owners: [
+    {
+      name: 'superman'
+    , start: 10
     , stop: 100
     }
-  }
+  ]
   , usage: {
       start: 1
     , stop: 1000

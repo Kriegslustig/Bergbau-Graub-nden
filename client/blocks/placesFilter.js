@@ -41,3 +41,22 @@ placesFilter.newSubFilter('placeType', {
     }
   }
 })
+
+placesFilter.newSubFilter('placeOwners', {
+  attributes: {
+    owners: {
+      value: []
+    , dataType: 'object'
+    }
+  }
+, generateSubFilter: function () {
+    var self = this
+    return {
+      'owners': {
+        $elemMatch: {
+          name: { $in: self.attributes.owners.value }
+        }
+      }
+    }
+  }
+})
