@@ -24,3 +24,10 @@ if(Places.find({}).count() < 1) {
     }
   })
 }
+
+if(Meteor.users.find({}).count() < 1) {
+  Accounts.createUser({
+    username: 'superman'
+  , password: 'megasicher'
+  })
+}
