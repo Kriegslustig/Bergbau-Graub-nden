@@ -8,3 +8,13 @@ body {
   font-family: Helvetica;
   font-weight: 200;
 }
+
+h1,
+h2,
+h3 {
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 2rem;
+}

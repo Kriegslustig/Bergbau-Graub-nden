@@ -13,7 +13,7 @@ if(Places.find({}).count() < 1) {
   , references: []
   , owners: {}
   , usage: {
-      start: 0
+      start: 1
     , stop: 1000
     }
   })
