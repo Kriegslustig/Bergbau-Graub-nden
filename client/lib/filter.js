@@ -26,9 +26,11 @@ Filter = {
 , updateItems: function () {
     var self = this
     self.concatinatedFilter = {}
-    _.map(self.subFilters, function (filterObject) {
-      _.extend(self.concatinatedFilter, filterObject.generateSubFilter())
-      return filterObject
+    _.map(self.subFilters, function (subFilter) {
+      if(subFilter.active) {
+        _.extend(self.concatinatedFilter, subFilter.generateSubFilter())
+      }
+      return subFilter
     })
     self._setItems(self.queryItems(self.concatinatedFilter))
   }
@@ -36,8 +38,10 @@ Filter = {
 , newSubFilter: function (subFilterName, newProps) {
     var self = this
     self.filterTemplate = {
+      // this can be used to deactivate the whole filter
+      active: true
       // All attributes used in the actual filter (filter.generateSubFilter) should be stored here
-      attributes: {
+    , attributes: {
         // An example to show the pattern that should be used
         sampleAttribute: {
           // When setAttribute is called the typeof newValue is checked against this
@@ -75,7 +79,6 @@ Filter = {
   // This executes the query saved in concatinatedFilter. It can be used the get _items as an unreactive array
 , queryItems: function () {
     var self = this
-    console.log(self.concatinatedFilter)
     return self.collection.find(self.concatinatedFilter).fetch()
   }
 }

@@ -43,7 +43,8 @@ placesFilter.newSubFilter('placeType', {
 })
 
 placesFilter.newSubFilter('placeOwners', {
-  attributes: {
+  active: false
+, attributes: {
     owners: {
       value: []
     , dataType: 'object'

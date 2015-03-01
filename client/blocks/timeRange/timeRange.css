@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  height: 2rem;
+  height: 40px;
   background-color: hsla(0, 0%, 20%, .2);
 }
 
@@ -12,20 +12,23 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 3rem;
-  width: 1px;
-  background-color: hsla(0, 0%, 70%, .9);
+  height: 40px;
+  width: 3px;
+  background-color: hsl(0, 0%, 97%);
 }
 
 .timeRange__control {
   display: block;
   position: absolute;
-  width: 2rem;
+  width: 40px;
   left: 0;
   top: 0;
-  background-color: hsla(0, 0%, 90%, .6);
-  line-height: 2rem;
+  background-color: hsl(0, 0%, 97%);
+  font-size: 2rem;
+  color: hsl(0, 0%, 0%);
+  line-height: 40px;
   text-align: center;
+  text-decoration: none;
 }
 
 .timeRange__control--stepUp {
