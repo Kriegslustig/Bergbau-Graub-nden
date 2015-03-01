@@ -7,9 +7,13 @@
   <script type="text/javascript">
     // TODO: find a better solution for this
     (function () {
-      var filterCheckboxesRenderedEvent = new CustomEvent('filterCheckboxesRendered', {detail: {
-        name: '{{ name }}'
-      }})
+      var details = {
+        detail: {
+          name: '{{ name }}'
+        }
+      }
+    , filterCheckboxesRenderedEvent = {}
+      filterCheckboxesRenderedEvent = new CustomEvent('filterCheckboxesRendered', details)
       document.dispatchEvent(filterCheckboxesRenderedEvent)
     })()
   </script>

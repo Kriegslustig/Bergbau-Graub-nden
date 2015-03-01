@@ -1,13 +1,14 @@
 FilterCheckboxes = {
-  items: [{
+  name: 'FilterCheckboxes'
+, items: [{
     label: 'Example'
   , name: 'example'
   }]
 , wrapperClassName: 'filterCheckboxes'
 , init: function () {
     var self = this
-    self.element = document.querySelector('.' + self.wrapperClassName)
-    self.list = self.element.querySelector('.' + self.wrapperClassName + ' .' + self.wrapperClassName + '__list')
+    self.element = document.querySelector('.' + self.wrapperClassName + '--' + self.name)
+    self.list = self.element.querySelector('.' + self.wrapperClassName + '--' + self.name + ' .' + self.wrapperClassName + '__list')
     if(self.list) {
       self.items.forEach(function (item) {
         Blaze.renderWithData(Template.filterCheckboxesCheckbox, item, self.list)
