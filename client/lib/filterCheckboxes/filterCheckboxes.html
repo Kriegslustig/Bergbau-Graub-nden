@@ -4,4 +4,13 @@
     <ul class="filterCheckboxes__list">
     </ul>
   </section>
+  <script type="text/javascript">
+    // TODO: find a better solution for this
+    (function () {
+      var filterCheckboxesRenderedEvent = new CustomEvent('filterCheckboxesRendered', {detail: {
+        name: '{{ name }}'
+      }})
+      document.dispatchEvent(filterCheckboxesRenderedEvent)
+    })()
+  </script>
 </template>

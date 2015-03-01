@@ -75,6 +75,7 @@ Filter = {
   // This executes the query saved in concatinatedFilter. It can be used the get _items as an unreactive array
 , queryItems: function () {
     var self = this
+    console.log(self.concatinatedFilter)
     return self.collection.find(self.concatinatedFilter).fetch()
   }
 }

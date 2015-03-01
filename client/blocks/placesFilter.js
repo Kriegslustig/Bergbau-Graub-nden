@@ -13,13 +13,30 @@ placesFilter.newSubFilter('usage', {
     }
   }
 , generateSubFilter: function () {
-    self = this
+    var self = this
     return {
       'usage.start': {
         $lte: self.attributes.start.value
       }
     , 'usage.stop': {
         $gte: self.attributes.start.value
+      }
+    }
+  }
+})
+
+placesFilter.newSubFilter('placeType', {
+  attributes: {
+    types: {
+      value: []
+    , dataType: 'object'
+    }
+  }
+, generateSubFilter: function () {
+    var self = this
+    return {
+      'type': {
+        $in: self.attributes.types.value
       }
     }
   }

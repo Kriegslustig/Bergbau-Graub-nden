@@ -26,7 +26,7 @@ timeRange = {
     newPosition = newPosition < 0 ? 0 : newPosition
     self.position = newPosition
     self.updateElementPosition()
-    self.events.change = new CustomEvent('change', {
+    self.events.change = new CustomEvent('changed', {
       detail: {position: self.position}
     })
     self.element.dispatchEvent(self.events.change)

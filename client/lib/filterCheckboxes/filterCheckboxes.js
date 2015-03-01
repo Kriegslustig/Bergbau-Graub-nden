@@ -6,12 +6,13 @@ FilterCheckboxes = {
 , wrapperClassName: 'filterCheckboxes'
 , init: function () {
     var self = this
-    self.list = document.querySelector('.' + self.wrapperClassName + ' ' + self.wrapperClassName + '__list')
+    self.element = document.querySelector('.' + self.wrapperClassName)
+    self.list = self.element.querySelector('.' + self.wrapperClassName + ' .' + self.wrapperClassName + '__list')
     if(self.list) {
       self.items.forEach(function (item) {
-        self.list.appendChild(Blaze.renderWithData(Template.filterCheckboxesCheckbox, item))
+        Blaze.renderWithData(Template.filterCheckboxesCheckbox, item, self.list)
       })
-      self.allElements = self.list.querySelectorAll(self.wrapperClassName + '__item')
+      self.allElements = self.list.querySelectorAll('.' + self.wrapperClassName + '__checkbox')
       self.setEvents()
     }
   }
@@ -23,21 +24,16 @@ FilterCheckboxes = {
       })
     })
   }
-, _trueList: []
-, _trueListDep: new Tracker.Dependency
-, getTrueList: function () {
-    var self = this
-    _trueListDep.depend()
-    return self._trueList
-  }
+, trueList: []
 , updateTrueList: function () {
     var self = this
-    self._trueList = []
+    self.trueList = []
     _.each(self.allElements, function (element) {
       if(element.checked) {
-        self._trueList.push(element.name)
+        self.trueList.push(element.name)
       }
     })
-    _trueListDep.changed()
+
+    self.element.dispatchEvent(new CustomEvent('changed', { detail: {trueList: self.trueList} }))
   }
 }
