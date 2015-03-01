@@ -51,7 +51,5 @@ reference
 ```
 
 # Package evaluation
-* Admin Interface -> orionjs:core, orionjs:styles
+* Admin Interface -> accounts-password
 * Router -> iron:router
-* Testing -> mike:mocha
-* Styling -> less
