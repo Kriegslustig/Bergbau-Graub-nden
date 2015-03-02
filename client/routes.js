@@ -30,6 +30,9 @@ Router.route('/places', {
 
 Router.route('/places/new', {
   name: 'placesNew'
+, waitOn: function () {
+    return Meteor.subscribe('placesList')
+  }
 , action: function () {
     var self = this
     self.render('pagePlacesNew')

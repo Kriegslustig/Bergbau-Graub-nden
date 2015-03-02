@@ -23,6 +23,31 @@ if(Places.find({}).count() < 1) {
     , stop: 1000
     }
   })
+  Places.insert({
+    location: {
+      name: 'A mine! :o'
+    , coordinates: {
+        longitude: 10323
+      , latitude: 22412
+      }
+    }
+  , type: 'mine'
+  , ores: ['eisen']
+  , thingsFound: []
+  , images: []
+  , references: []
+  , owners: [
+    {
+      name: 'superman'
+    , start: 10
+    , stop: 100
+    }
+  ]
+  , usage: {
+      start: 1
+    , stop: 1000
+    }
+  })
 }
 
 if(Meteor.users.find({}).count() < 1) {

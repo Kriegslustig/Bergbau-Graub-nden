@@ -11,7 +11,7 @@ Meteor.methods({
         }
       }
     , type: data.type
-    , ore: data.ore
+    , ores: data.ores.split(', ')
     , finds: data.finds
     , images: data.images
     , references: data.references
