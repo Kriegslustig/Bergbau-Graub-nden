@@ -15,6 +15,20 @@ h3 {
   font-weight: 800;
 }
 
-h3 {
+h1,
+h2 {
   font-size: 2rem;
+}
+
+legend {
+  font-weight: 800;
+  float: left;
+  width: 100%;
+}
+
+fieldset {
+  padding: .5rem;
+  float: left;
+  clear: both;
+  width: 100%;
 }
