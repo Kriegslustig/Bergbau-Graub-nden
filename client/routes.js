@@ -27,3 +27,11 @@ Router.route('/places', {
     self.render('pagePlaces')
   }
 })
+
+Router.route('/places/new', {
+  name: 'placesNew'
+, action: function () {
+    var self = this
+    self.render('pagePlacesNew')
+  }
+})
