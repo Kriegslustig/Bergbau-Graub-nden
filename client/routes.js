@@ -46,8 +46,6 @@ Router.route('/places/:_id/edit', {
   }
 , action: function () {
     var self = this
-    self.render('pagePlacesEdit', {data: {
-      _id: this.params._id
-    }})
+    self.render('pagePlacesEdit', {data: Places.findOne({_id: self.params._id})})
   }
 })

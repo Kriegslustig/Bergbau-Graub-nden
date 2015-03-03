@@ -1,27 +1,6 @@
 <template name="pagePlacesEdit">
   <main>
     <h2>Edit this Places</h2>
-    {{ #with getDataDict _id }}
-      {{ #autoForm collection='Places' type='update' }}
-        <fieldset>
-          <legend>Location</legend>
-          {{ > afQuickField name='locationName' value=locationName }}
-          {{ > afQuickField name='locationLatitude' value=locationLatitude }}
-          {{ > afQuickField name='locationLongitude' value=locationLongitude }}
-        </fieldset>
-        <fieldset>
-          <legend>Details</legend>
-          {{ > afQuickField name='type' }}
-          {{ > afQuickField name='ores' }}
-        </fieldset>
-        <fieldset>
-          <legend>Usage</legend>
-          {{ > afQuickField name='owners' }}
-          {{ > afQuickField name='usageStart' }}
-          {{ > afQuickField name='usageStop' }}
-        </fieldset>
-        <button type="submit">Submit</button>
-      {{ /autoForm }}
-    {{ /with }}
+    {{> quickForm collection="Places" doc=this type="update"}}
   </main>
 </template>
