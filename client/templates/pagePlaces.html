@@ -1,7 +1,12 @@
 <template name="pagePlaces">
-  <ul class="places">
+  <table class="places">
     {{ #each listPlaces }}
-      <li class="places__item">{{ location.name }}</li>
+      <tr class="places__item">
+        <td>{{ location.name }}</td>
+        <td>{{ location.coordinates.latitude }} : {{ location.coordinates.longitude }}</td>
+        <td>{{ usage.start }} - {{ usage.stop }}</td>
+        <td>{{ type }}</td>
+      </tr>
     {{ /each }}
-  </ul>
+  </table>
 </template>
