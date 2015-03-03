@@ -54,8 +54,8 @@ document.addEventListener('filterCheckboxesRendered', function (e) {
   , ownersBuffer = []
     _.each(allPlacesWithOwners, function (place) {
       _.each(place.owners, function (owner) {
-        if(ownersBuffer.indexOf(owner.name) < 0) {
-          ownersBuffer.push(owner.name)
+        if(ownersBuffer.indexOf(owner.ownerName) < 0) {
+          ownersBuffer.push(owner.ownerName)
         }
       })
     })
