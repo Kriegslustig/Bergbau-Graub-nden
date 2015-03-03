@@ -1,12 +1,12 @@
 <template name="pagePlacesNew">
   <main>
     <h2>Add a new Places</h2>
-    {{ #autoForm schema=placeSchema type='method' meteormethod='newPlace' }}
+    {{ #autoForm collection='Places' type='insert' }}
       <fieldset>
         <legend>Location</legend>
-        {{ > afQuickField name='locationName' }}
-        {{ > afQuickField name='locationLatitude' }}
-        {{ > afQuickField name='locationLongitude' }}
+        {{ > afQuickField name='location.locationName' }}
+        {{ > afQuickField name='location.coordinates.latitude' }}
+        {{ > afQuickField name='location.coordinates.longitude' }}
       </fieldset>
       <fieldset>
         <legend>Details</legend>
@@ -16,8 +16,8 @@
       <fieldset>
         <legend>Usage</legend>
         {{ > afQuickField name='owners' }}
-        {{ > afQuickField name='usageStart' }}
-        {{ > afQuickField name='usageStop' }}
+        {{ > afQuickField name='usage.start' }}
+        {{ > afQuickField name='usage.stop' }}
       </fieldset>
       <button type="submit">Submit</button>
     {{ /autoForm }}

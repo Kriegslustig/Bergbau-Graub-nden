@@ -38,3 +38,16 @@ Router.route('/places/new', {
     self.render('pagePlacesNew')
   }
 })
+
+Router.route('/places/:_id/edit', {
+  name: 'placesEdit'
+, waitOn: function () {
+    return Meteor.subscribe('placesList')
+  }
+, action: function () {
+    var self = this
+    self.render('pagePlacesEdit', {data: {
+      _id: this.params._id
+    }})
+  }
+})

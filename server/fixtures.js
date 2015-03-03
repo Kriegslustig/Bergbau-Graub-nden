@@ -1,19 +1,16 @@
 if(Places.find({}).count() < 1) {
   Places.insert({
     location: {
-      name: 'My Home'
+      locationName: 'My Home'
     , coordinates: {
         longitude: 12323
       , latitude: 24412
       }
     }
   , type: 'home'
-  , thingsFound: []
-  , images: []
-  , references: []
   , owners: [
     {
-      name: 'superman'
+      ownerName: 'superman'
     , start: 10
     , stop: 100
     }
@@ -25,7 +22,7 @@ if(Places.find({}).count() < 1) {
   })
   Places.insert({
     location: {
-      name: 'A mine! :o'
+      locationName: 'A mine! :o'
     , coordinates: {
         longitude: 10323
       , latitude: 22412
@@ -33,12 +30,9 @@ if(Places.find({}).count() < 1) {
     }
   , type: 'mine'
   , ores: ['eisen']
-  , thingsFound: []
-  , images: []
-  , references: []
   , owners: [
     {
-      name: 'superman'
+      ownerName: 'superman'
     , start: 10
     , stop: 100
     }

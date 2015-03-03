@@ -2,10 +2,11 @@
   <table class="places">
     {{ #each listPlaces }}
       <tr class="places__item">
-        <td>{{ location.name }}</td>
+        <td>{{ location.locationName }}</td>
         <td>{{ location.coordinates.latitude }} : {{ location.coordinates.longitude }}</td>
         <td>{{ usage.start }} - {{ usage.stop }}</td>
         <td>{{ type }}</td>
+        <td><a href="/places/{{ _id }}/edit">Edit</a></td>
       </tr>
     {{ /each }}
   </table>
