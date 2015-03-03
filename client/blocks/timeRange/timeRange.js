@@ -1,6 +1,7 @@
 timeRange = {
   config: {
     elemClass: 'timeRange'
+  , grabbingClass: 'timeRange--js--grabbing'
   , barElemClass: 'timeRange__bar'
   , step: 100
   }
@@ -48,14 +49,18 @@ timeRange = {
     var self = this
     function followMouse (e) {
       self.setRealPosition(e.x)
+      return false
     }
     self.element.addEventListener('mousedown', function (e) {
       if(e.toElement === self.element) {
         self.setRealPosition(e.x)
+        self.element.className += ' ' + self.config.grabbingClass
         self.element.addEventListener('mousemove', followMouse)
+        return false
       }
     })
     self.element.addEventListener('mouseup', function (e) {
+      self.element.className = self.element.className.replace(' ' + self.config.grabbingClass, '')
       self.element.removeEventListener('mousemove', followMouse)
     })
   }

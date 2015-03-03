@@ -6,6 +6,13 @@
   width: 100%;
   height: 40px;
   background-color: hsla(0, 0%, 20%, .2);
+  user-select: none;
+  cursor: pointer;
+}
+
+.timeRange--js--grabbing {
+  cursor: move;
+  cursor: grabbing;
 }
 
 .timeRange__bar {
@@ -15,6 +22,7 @@
   height: 40px;
   width: 3px;
   background-color: hsl(0, 0%, 97%);
+  cursor: grab;
 }
 
 .timeRange__control {
