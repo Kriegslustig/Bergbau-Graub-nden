@@ -48,7 +48,7 @@ timeRange = {
 , setListeners: function () {
     var self = this
     self.element.addEventListener('click', function (e) {
-      self.setRealPosition(e.x)
+      if(e.toElement === self.element) self.setRealPosition(e.x)
     })
   }
 }
