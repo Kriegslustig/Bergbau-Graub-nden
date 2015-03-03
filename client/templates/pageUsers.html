@@ -1,13 +1,9 @@
 <template name="pageUsers">
-  {{ #if currentUser }}
-    <main>
-      <ul class="users">
-        {{ #each usersList }}
-          <li class="users__item">{{ username }}</li>
-        {{ /each }}
-      </ul>
-    </main>
-  {{ else }}
-    {{ > loginForm }}
-  {{ /if }}
+  <main>
+    <ul class="users">
+      {{ #each usersList }}
+        <li class="users__item">{{ username }}</li>
+      {{ /each }}
+    </ul>
+  </main>
 </template>

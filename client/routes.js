@@ -1,3 +1,13 @@
+function redirectIfNotLoggedIn () {
+  var self = this
+  if(!Meteor.user()) {
+    Session.set('sendMeBackTo', self.url)
+    self.redirect('login')
+  } else {
+    self.next()
+  }
+}
+
 Router.route('/', {
   name: 'map'
 , waitOn: function () {
@@ -6,6 +16,14 @@ Router.route('/', {
 , action: function () {
     var self = this
     self.render('pageMap')
+  }
+})
+
+Router.route('/login', {
+  name: 'login'
+, action: function () {
+    var self = this
+    self.render('pageLogin')
   }
 })
 
@@ -30,6 +48,7 @@ Router.route('/places', {
 
 Router.route('/places/new', {
   name: 'places.new'
+, onBeforeAction: redirectIfNotLoggedIn
 , waitOn: function () {
     return Meteor.subscribe('placesList')
   }
