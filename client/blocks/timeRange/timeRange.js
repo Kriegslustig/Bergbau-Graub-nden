@@ -36,7 +36,6 @@ timeRange = {
     var self = this
   , abstractPos = 0
     abstractPos = Math.round( newPosition / ( self.element.clientWidth / self.max ) / self.config.step ) * self.config.step
-    console.log(newPosition, abstractPos)
     self.setAbstractPosition(abstractPos)
   }
 , updateElementPosition: function () {
@@ -47,8 +46,17 @@ timeRange = {
   }
 , setListeners: function () {
     var self = this
-    self.element.addEventListener('click', function (e) {
-      if(e.toElement === self.element) self.setRealPosition(e.x)
+    function followMouse (e) {
+      self.setRealPosition(e.x)
+    }
+    self.element.addEventListener('mousedown', function (e) {
+      if(e.toElement === self.element) {
+        self.setRealPosition(e.x)
+        self.element.addEventListener('mousemove', followMouse)
+      }
+    })
+    self.element.addEventListener('mouseup', function (e) {
+      self.element.removeEventListener('mousemove', followMouse)
     })
   }
 }
