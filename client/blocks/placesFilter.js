@@ -26,7 +26,8 @@ placesFilter.newSubFilter('usage', {
 })
 
 placesFilter.newSubFilter('placeType', {
-  attributes: {
+    active: false
+  , attributes: {
     types: {
       value: []
     , dataType: 'object'

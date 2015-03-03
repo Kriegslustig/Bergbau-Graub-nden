@@ -11,10 +11,20 @@ placesFilterController = {
     placesFilter.subFilters.usage.setAttribute('start', e.detail.position)
   }
 , updateType: function (e) {
-    placesFilter.subFilters.placeType.setAttribute('types', e.detail.trueList)
+    if(e.detail.trueList.length > 0) {
+      placesFilter.subFilters.placeType.active = true
+      placesFilter.subFilters.placeType.setAttribute('types', e.detail.trueList)
+    } else {
+      placesFilter.subFilters.placeType.active = false
+    }
   }
 , updateOwners: function (e) {
-    placesFilter.subFilters.placeOwners.setAttribute('owners', e.detail.trueList)
+    if(e.detail.trueList.length > 0) {
+      placesFilter.subFilters.placeOwners.active = true
+      placesFilter.subFilters.placeOwners.setAttribute('owners', e.detail.trueList)
+    } else {
+      placesFilter.subFilters.placeOwners.active = false
+    }
   }
 }
 
