@@ -29,6 +29,7 @@ Router.route('/login', {
 
 Router.route('/users', {
   name: 'users'
+, onBeforeAction: redirectIfNotLoggedIn
 , action: function () {
     var self = this
     self.render('pageUsers')
@@ -60,6 +61,7 @@ Router.route('/places/new', {
 
 Router.route('/places/:_id/edit', {
   name: 'places.edit'
+, onBeforeAction: redirectIfNotLoggedIn
 , waitOn: function () {
     return Meteor.subscribe('placesList')
   }
