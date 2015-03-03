@@ -29,7 +29,7 @@ Router.route('/places', {
 })
 
 Router.route('/places/new', {
-  name: 'placesNew'
+  name: 'places.new'
 , waitOn: function () {
     return Meteor.subscribe('placesList')
   }
@@ -40,7 +40,7 @@ Router.route('/places/new', {
 })
 
 Router.route('/places/:_id/edit', {
-  name: 'placesEdit'
+  name: 'places.edit'
 , waitOn: function () {
     return Meteor.subscribe('placesList')
   }

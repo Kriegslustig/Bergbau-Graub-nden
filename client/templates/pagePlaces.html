@@ -6,7 +6,7 @@
         <td>{{ location.coordinates.latitude }} : {{ location.coordinates.longitude }}</td>
         <td>{{ usage.start }} - {{ usage.stop }}</td>
         <td>{{ type }}</td>
-        <td><a href="/places/{{ _id }}/edit">Edit</a></td>
+        <td><a href="{{ pathFor 'places.edit' }}">Edit</a></td>
       </tr>
     {{ /each }}
   </table>
