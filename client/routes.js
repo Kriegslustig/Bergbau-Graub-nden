@@ -1,6 +1,6 @@
 function redirectIfNotLoggedIn () {
   var self = this
-  if(!Meteor.user()) {
+  if(!Meteor.userId()) {
     Session.set('sendMeBackTo', self.url)
     self.redirect('login')
   } else {
