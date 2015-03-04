@@ -4,8 +4,8 @@
     data-longitude="{{ location.coordinates.longitude }}"
     data-latitude="{{ location.coordinates.latitude }}"
     style="
-    left:{{ latitudeToPercent location.coordinates.latitude }}%;
-    top:{{ longitudeToPercent location.coordinates.longitude }}%;
+    left: {{ latitudeToPercent location.coordinates.latitude }}%;
+    top: calc({{ longitudeToPercent location.coordinates.longitude }}% * 0.6);
   ">
     <h4 class="place__location">{{ location.locationName }}</h4>
   </li>
