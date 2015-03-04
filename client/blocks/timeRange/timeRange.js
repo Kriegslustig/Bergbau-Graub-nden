@@ -63,6 +63,11 @@ timeRange = {
       self.element.className = self.element.className.replace(' ' + self.config.grabbingClass, '')
       self.element.removeEventListener('mousemove', followMouse)
     })
+    self.element.addEventListener('mouseout', function (e) {
+      if(e.toElement === self.element || e.toElement ===  self.bar) return true
+      self.element.className = self.element.className.replace(' ' + self.config.grabbingClass, '')
+      self.element.removeEventListener('mousemove', followMouse)
+    })
   }
 }
 
