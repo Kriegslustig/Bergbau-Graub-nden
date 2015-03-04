@@ -1,0 +1,12 @@
+.zoomer__preventer {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.zoomer__wrapper {
+  overflow: hidden;
+  overflow-y: scroll;
+}

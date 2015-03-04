@@ -2,13 +2,13 @@
 
   {{ setMetaTitle 'Map' }}
 
+  {{ > sidebar }}
   <main class="map">
-    {{ > sidebar }}
     <ul class="map__places">
       {{ #each listPlaces }}
         {{ > blockPlace }}
       {{ /each }}
     </ul>
-    {{ > placesFilterController }}
   </main>
+  {{ > placesFilterController }}
 </template>
