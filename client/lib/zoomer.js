@@ -3,6 +3,10 @@ Zoomer = {
     maxZoom: 3
   , zoomSpeed: 10
   }
+, position: {
+    x: 0
+  , y: 0
+  }
 , disabled: false
 , overflower: document.createElement('div')
 , zoomWrapper: document.createElement('div')
@@ -54,5 +58,11 @@ Zoomer = {
     self.zoomWrapper.appendChild(self.overflower)
 
     self.zoomWrapper.scrollTop = self.scrollHeight
+  }
+, goTo: function (posX, posY) {
+    var self = this
+    self.position.x = posX
+    self.position.y = posY
+    self.element.style.transform = 'matrix(1,0,0,1,' + posX + ',' + posY + ')'
   }
 }
