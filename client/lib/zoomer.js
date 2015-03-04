@@ -24,7 +24,6 @@ Zoomer = {
   }
 , zoom: function (diff) {
     var self = this
-    console.log(diff)
     self.element.style.height = Math.round(self.element.clientHeight * diff) + 'px'
     self.element.style.width = Math.round(self.element.clientWidth * diff) + 'px'
   } // Takes a factod (ex. x2)

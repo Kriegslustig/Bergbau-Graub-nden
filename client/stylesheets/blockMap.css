@@ -1,4 +1,8 @@
 .map {
   height: 60vw;
   width: 100vw;
+  background-image: url('http://localhost:3000/images/Kanton-Graubuenden-lr_path_trans_2.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
