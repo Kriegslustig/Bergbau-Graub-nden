@@ -4,10 +4,15 @@ Zoomer = {
   , zoomSpeed: 10
   }
 , position: {
+    x: 1
+  , y: 1
+  }
+, mousePosition: {
     x: 0
   , y: 0
   }
 , disabled: false
+, zoomLevel: 1
 , overflower: document.createElement('div')
 , zoomWrapper: document.createElement('div')
 , overflowPreventer: document.createElement('div')
@@ -23,14 +28,32 @@ Zoomer = {
     self.currentScrollTop = self.zoomWrapper.scrollTop
     self.zoomWrapper.addEventListener('scroll', function () {
       if(self.disabled) return true
+      self.disabled = false
       self.zoom(self.calcDiff(self.zoomWrapper.scrollTop))
     })
+    self.zoomWrapper.addEventListener('mousemove', _.throttle(function (e) {
+      self.mousePosition.x = e.clientX
+      self.mousePosition.y = e.clientY
+    }, 100))
   }
 , zoom: function (diff) {
     var self = this
-    self.element.style.height = Math.round(self.element.clientHeight * diff) + 'px'
-    self.element.style.width = Math.round(self.element.clientWidth * diff) + 'px'
-  } // Takes a factod (ex. x2)
+    setTimeout(function () {
+      var newHeight = Math.round(self.element.clientHeight * diff)
+      , newWidth = Math.round(self.element.clientWidth * diff)
+      , goToX
+      , goToY
+      
+      self.zoomLevel = self.zoomLevel * diff
+
+      goToX = (self.mousePosition.x - self.mousePosition.x * self.zoomLevel)
+      goToY = (self.mousePosition.y - self.mousePosition.y * self.zoomLevel)
+
+      self.goTo(goToX, goToY)
+      self.element.style.height = newHeight + 'px'
+      self.element.style.width = newWidth + 'px'
+    }, 30)
+  } // Takes a factor (ex. x2)
 , calcDiff: function (newScrollTop) {
     var self = this
   , scrollDiff = self.currentScrollTop - newScrollTop
