@@ -1,4 +1,4 @@
-placesFilter = Object.create(Filter)
+placesFilter = Object.create(KriegslustigFilter)
 placesFilter.collection = Places
 
 placesFilter.newSubFilter('usage', {
