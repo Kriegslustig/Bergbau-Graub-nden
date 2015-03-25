@@ -80,7 +80,6 @@ Zoomer = {
   }
 , setRequiredStyles: function () {
     var self = this
-    self.zoomWrapperHeight = Math.round(self.element.clientHeight * 100 / self.element.clientWidth) + 'vw'
     self.scrollHeight = self.config.maxZoom * 10 * self.element.clientHeight / self.config.maxZoom
 
     self.overflower.className = 'zoomer__overflower'
@@ -88,10 +87,6 @@ Zoomer = {
     self.overflowPreventer.className = 'zoomer__preventer'
 
     self.overflower.style.height = self.scrollHeight + 'px'
-    self.zoomWrapper.style.height = self.zoomWrapperHeight
-    self.zoomWrapper.style.width = '100vw'
-    self.overflowPreventer.style.height = self.zoomWrapperHeight
-    self.overflowPreventer.style.width = '100vw'
 
     self.element.parentNode.appendChild(self.zoomWrapper)
     self.element.parentNode.appendChild(self.overflowPreventer)
