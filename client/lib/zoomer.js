@@ -8,9 +8,11 @@ Zoomer = {
   , y: 1
   }
 , mousePosition: {
-    x: 0
-  , y: 0
+    x: 1
+  , y: 1
   }
+, currentWidth: 0
+, currentHeight: 0
 , disabled: false
 , zoomLevel: 1
 , overflower: document.createElement('div')
@@ -21,12 +23,14 @@ Zoomer = {
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
     self.setRequiredStyles()
+    self.currentHeight = self.element.clientHeight
+    self.currentWidth = self.element.clientWidth
     self.setListeners()
   }
 , setListeners: function () {
     var self = this
     self.currentScrollTop = self.zoomWrapper.scrollTop
-    self.zoomWrapper.addEventListener('scroll', function () {
+    self.zoomWrapper.addEventListener('scroll', function (e) {
       if(self.disabled) return true
       self.disabled = false
       self.zoom(self.calcDiff(self.zoomWrapper.scrollTop))
@@ -46,14 +50,17 @@ Zoomer = {
       
       self.zoomLevel = self.zoomLevel * diff
 
-      goToX = (self.mousePosition.x - self.mousePosition.x * self.zoomLevel)
-      goToY = (self.mousePosition.y - self.mousePosition.y * self.zoomLevel)
+      goToX = self.mousePosition.x - (self.mousePosition.x - self.position.x) * diff      
+      goToY = self.mousePosition.y - (self.mousePosition.y - self.position.y) * diff
 
       self.goTo(goToX, goToY)
+
+      self.currentHeight = newHeight
       self.element.style.height = newHeight + 'px'
+      self.currentWidth = newWidth
       self.element.style.width = newWidth + 'px'
     }, 30)
-  } // Takes a factor (ex. x2)
+  } // Takes a factor (ex. 2)
 , calcDiff: function (newScrollTop) {
     var self = this
   , scrollDiff = self.currentScrollTop - newScrollTop
