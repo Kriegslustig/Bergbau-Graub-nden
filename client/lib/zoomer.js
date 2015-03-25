@@ -15,6 +15,7 @@ Zoomer = {
 , currentHeight: 0
 , disabled: false
 , zoomLevel: 1
+, followMouse: false
 , overflower: document.createElement('div')
 , zoomWrapper: document.createElement('div')
 , overflowPreventer: document.createElement('div')
@@ -36,9 +37,19 @@ Zoomer = {
       self.zoom(self.calcDiff(self.zoomWrapper.scrollTop))
     })
     self.zoomWrapper.addEventListener('mousemove', _.throttle(function (e) {
+      self.followToMouse(e.clientX, e.clientY)
       self.mousePosition.x = e.clientX
       self.mousePosition.y = e.clientY
-    }, 100))
+    }, 20))
+    self.zoomWrapper.addEventListener('mousedown', function () {
+      self.followMouse = true
+    })
+    self.zoomWrapper.addEventListener('mouseout', function () {
+      self.followMouse = false
+    })
+    self.zoomWrapper.addEventListener('mouseup', function () {
+      self.followMouse = false
+    })
   }
 , zoom: function (diff) {
     var self = this
@@ -94,5 +105,16 @@ Zoomer = {
     self.position.x = posX
     self.position.y = posY
     self.element.style.transform = 'matrix(1,0,0,1,' + posX + ',' + posY + ')'
+  }
+, followToMouse: function (newX, newY) {
+    var self = this
+    , newPosX
+    , newPosY
+
+    if(!self.followMouse) return false
+
+    newPosX = self.position.x + newX - self.mousePosition.x
+    newPosY = self.position.y + newY - self.mousePosition.y
+    self.goTo(newPosX, newPosY)
   }
 }
