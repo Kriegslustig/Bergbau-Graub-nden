@@ -13,7 +13,6 @@ Zoomer = {
   }
 , currentWidth: 0
 , currentHeight: 0
-, disabled: false
 , zoomLevel: 1
 , followMouse: false
 , overflower: document.createElement('div')
@@ -31,11 +30,9 @@ Zoomer = {
 , setListeners: function () {
     var self = this
     self.currentScrollTop = self.zoomWrapper.scrollTop
-    self.zoomWrapper.addEventListener('scroll', function (e) {
-      if(self.disabled) return true
-      self.disabled = false
+    self.zoomWrapper.addEventListener('scroll', _.throttle(function () {
       self.zoom(self.calcDiff(self.zoomWrapper.scrollTop))
-    })
+    }))
     self.zoomWrapper.addEventListener('mousemove', _.throttle(function (e) {
       self.followToMouse(e.clientX, e.clientY)
       self.mousePosition.x = e.clientX
@@ -53,24 +50,22 @@ Zoomer = {
   }
 , zoom: function (diff) {
     var self = this
-    setTimeout(function () {
-      var newHeight = Math.round(self.element.clientHeight * diff)
-      , newWidth = Math.round(self.element.clientWidth * diff)
-      , goToX
-      , goToY
-      
-      self.zoomLevel = self.zoomLevel * diff
+    var newHeight = Math.round(self.element.clientHeight * diff)
+    , newWidth = Math.round(self.element.clientWidth * diff)
+    , goToX
+    , goToY
+    
+    self.zoomLevel = self.zoomLevel * diff
 
-      goToX = self.mousePosition.x - (self.mousePosition.x - self.position.x) * diff      
-      goToY = self.mousePosition.y - (self.mousePosition.y - self.position.y) * diff
+    goToX = self.mousePosition.x - (self.mousePosition.x - self.position.x) * diff      
+    goToY = self.mousePosition.y - (self.mousePosition.y - self.position.y) * diff
 
-      self.goTo(goToX, goToY)
+    self.goTo(goToX, goToY)
 
-      self.currentHeight = newHeight
-      self.element.style.height = newHeight + 'px'
-      self.currentWidth = newWidth
-      self.element.style.width = newWidth + 'px'
-    }, 30)
+    self.currentHeight = newHeight
+    self.element.style.height = newHeight + 'px'
+    self.currentWidth = newWidth
+    self.element.style.width = newWidth + 'px'
   } // Takes a factor (ex. 2)
 , calcDiff: function (newScrollTop) {
     var self = this
