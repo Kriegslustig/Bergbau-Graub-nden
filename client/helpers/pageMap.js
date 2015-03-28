@@ -5,6 +5,6 @@ Template.pageMap.helpers({
 })
 
 Template.pageMap.rendered = function () {
-  var thisZoomer = Object.create(Zoomer)
+  thisZoomer = Object.create(Zoomer)
   thisZoomer.init('.map')
 }

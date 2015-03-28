@@ -1,7 +1,7 @@
 Zoomer = {
   config: {
-    maxZoom: 3
-  , zoomSpeed: 10
+    maxZoom: 2
+  , zoomSpeed: 1
   }
 , position: {
     x: 1
@@ -11,8 +11,7 @@ Zoomer = {
     x: 1
   , y: 1
   }
-, currentWidth: 0
-, currentHeight: 0
+, lastScrollState: 0
 , zoomLevel: 1
 , followMouse: false
 , overflower: document.createElement('div')
@@ -22,9 +21,9 @@ Zoomer = {
     var self = this
     self.element = document.querySelector(elementSelector)
     if(!self.element) return false
+    self.realHeight = self.element.clientHeight
+    self.realWidth = self.element.clientWidth
     self.setRequiredStyles()
-    self.currentHeight = self.element.clientHeight
-    self.currentWidth = self.element.clientWidth
     self.setListeners()
   }
 , setListeners: function () {
@@ -48,34 +47,36 @@ Zoomer = {
       self.followMouse = false
     })
   }
-, zoom: function (diff) {
+, zoom: function (newZoom) {
     var self = this
-    var newHeight = Math.round(self.element.clientHeight * diff)
-    , newWidth = Math.round(self.element.clientWidth * diff)
-    , goToX
-    , goToY
-    
-    self.zoomLevel = self.zoomLevel * diff
+    var newHeight = Math.round(self.realHeight * newZoom)
+    , zoomDiff = newZoom / self.zoomLevel
+    , newWidth = Math.round(self.realWidth * newZoom)
+    , goToX = self.mousePosition.x - (self.mousePosition.x - self.position.x) * zoomDiff
+    , goToY = self.mousePosition.y - (self.mousePosition.y - self.position.y) * zoomDiff
 
-    goToX = self.mousePosition.x - (self.mousePosition.x - self.position.x) * diff      
-    goToY = self.mousePosition.y - (self.mousePosition.y - self.position.y) * diff
+    self.zoomLevel = newZoom
 
     self.goTo(goToX, goToY)
 
-    self.currentHeight = newHeight
     self.element.style.height = newHeight + 'px'
-    self.currentWidth = newWidth
     self.element.style.width = newWidth + 'px'
   } // Takes a factor (ex. 2)
 , calcDiff: function (newScrollTop) {
     var self = this
-  , scrollDiff = self.currentScrollTop - newScrollTop
-    self.currentScrollTop = newScrollTop
-    return scrollDiff / self.scrollHeight + 1
+    , currentScrollState = (newScrollTop / self.maxScrollTop *-1 + 1) * self.config.maxZoom
+
+    // var scrollDiff = self.currentScrollTop - newScrollTop
+    // self.currentScrollTop = newScrollTop
+    // return scrollDiff * self.config.zoomSpeed / self.scrollHeight + 1
+
+    self.lastScrollState = currentScrollState
+    return currentScrollState
   }
 , setRequiredStyles: function () {
     var self = this
-    self.scrollHeight = self.config.maxZoom * 10 * self.element.clientHeight / self.config.maxZoom
+    self.scrollHeight = self.config.maxZoom / self.config.zoomSpeed * innerHeight
+    self.maxScrollTop = self.scrollHeight - self.zoomWrapper.clientHeight
 
     self.overflower.className = 'zoomer__overflower'
     self.zoomWrapper.className = 'zoomer__wrapper'
