@@ -1,6 +1,6 @@
 Zoomer = {
   config: {
-    maxZoom: 2
+    maxZoom: 5
   , zoomSpeed: 1
   }
 , position: {
@@ -65,11 +65,6 @@ Zoomer = {
 , calcDiff: function (newScrollTop) {
     var self = this
     , currentScrollState = (newScrollTop / self.maxScrollTop *-1 + 1) * self.config.maxZoom
-
-    // var scrollDiff = self.currentScrollTop - newScrollTop
-    // self.currentScrollTop = newScrollTop
-    // return scrollDiff * self.config.zoomSpeed / self.scrollHeight + 1
-
     self.lastScrollState = currentScrollState
     return currentScrollState
   }
